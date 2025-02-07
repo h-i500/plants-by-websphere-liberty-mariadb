@@ -32,16 +32,17 @@
         <connectionManager agedTimeout="0" connectionTimeout="180" maxIdleTime="1800" maxPoolSize="10" minPoolSize="1" reapTime="180"/>
     </dataSource> -->
 
+<!-- JDBC Definition (MySQL) -->
 <variable name="MYSQL_JDBC_DRIVER_PATH" value="/opt/ibm/wlp/usr/shared/resources/mysql/" />
-    <jdbcDriver id="MySQL 5.1.38.1" javax.sql.DataSource="com.mysql.jdbc.jdbc2.optional.MysqlConnectionPoolDataSource">
-            <library>
-                <file name="${MYSQL_JDBC_DRIVER_PATH}/mysql-connector-java-5.1.38.jar"/>
-            </library>
-        </jdbcDriver>
-    <dataSource id="MySQL JTA for Plants by WebSphere" jdbcDriverRef="MySQL 5.1.38.1" jndiName="jdbc/PlantsByWebSphereMySQLDataSource">
-            <properties databaseName="plantsdb" password="${env.DB_PASSWORD}" portNumber="${env.DB_PORT}" serverName="${env.DB_HOST}" user="${env.DB_USER}" relaxAutoCommit="false"/>
-            <connectionManager agedTimeout="0" connectionTimeout="180" maxIdleTime="1800" maxPoolSize="10" minPoolSize="1" reapTime="180"/>
-        </dataSource>
+<jdbcDriver id="MySQL 5.1.38.1" javax.sql.DataSource="com.mysql.jdbc.jdbc2.optional.MysqlConnectionPoolDataSource">
+    <library>
+        <file name="${MYSQL_JDBC_DRIVER_PATH}/mysql-connector-java-5.1.38.jar"/>
+    </library>
+</jdbcDriver>
+<dataSource id="MySQL JTA for Plants by WebSphere" jdbcDriverRef="MySQL 5.1.38.1" jndiName="jdbc/PlantsByWebSphereDataSource">
+    <properties databaseName="plantsdb" password="${env.DB_PASSWORD}" portNumber="${env.DB_PORT}" serverName="${env.DB_HOST}" user="${env.DB_USER}" relaxAutoCommit="false"/>
+    <connectionManager agedTimeout="0" connectionTimeout="180" maxIdleTime="1800" maxPoolSize="10" minPoolSize="1" reapTime="180"/>
+</dataSource>
       
 <mailSession description="" from="" jndiName="mail/PlantsByWebSphere" mailSessionID="PlantsbyWebSphere" user="foo" password="bar" host="localhost">
         <property name="mail.imap.host" value="impa.gmail.com"/>
